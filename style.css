@@ -1,0 +1,80 @@
+* body{
+            margin: 0px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+            /* overflow is used in css because it prevents scrollbars from appearing */
+        }
+        .container {
+            font-size: 10px;
+            width: 40em;
+            height: 40em;
+            position: relative;
+            /* relative positioning is used to position child elements absolutely within this container */
+            /* this allows the sun, earth, and moon to be positioned relative to the container */
+
+        }
+        .sun {
+            position: absolute;
+            /* absolute positioning is used to position the sun within the container */
+            /* this allows the sun to be positioned relative to the container */
+            top: 15em;
+            left: 15em;
+            width: 10em;
+            height: 10em;
+            box-shadow: 0 0 3em white;
+            /* syntax for box-shadow: <h-offset> <v-offset> <blur-radius> <color> */
+            background: yellow;
+            border-radius: 50%;
+        } 
+      .earth,.moon{
+        position: absolute;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+        /* border-color syntax <color top> <color right> <color bottom> <color left> */
+        /* border-width syntax <top> <right> <bottom> <left> */
+        border-width: 0.1em 0.1em 0;
+        border-radius: 50%;
+      }
+      .earth{
+        top: 5em;
+        left: 5em;
+        width: 30em;
+        height: 30em;
+        /* em is a relative unit of measurement in CSS */
+        animation: orbit 36.5s linear infinite;
+      }
+      .moon{
+        top: 0;
+        right: 0;
+        width: 8em;
+        height: 8em;
+        animation: orbit 3s linear infinite;
+      }
+      .earth::before ,.moon::before{
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+      }
+      .earth::before{
+        top: 2.8em;
+        right: 2.8em;
+        width: 3em;
+        height: 3em;
+        background-color: aqua;
+      }
+      .moon::before{
+        top: 0.8em;
+        right: 0.2em;
+        width: 1.2em;
+        height: 1.2em;
+        background-color: silver;
+      }
+      @keyframes orbit{
+        to {
+          transform: rotate(360deg);
+        }
+      }
